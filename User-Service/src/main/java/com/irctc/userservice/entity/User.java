@@ -37,6 +37,12 @@ public class User {
     @Column(name = "email_verified", nullable = false)
     private Boolean emailVerified = false;
 
+    @Column(name = "provider")
+    private String provider;
+
+    @Column(name = "provider_subject")
+    private String providerSubject;
+
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;

@@ -27,9 +27,12 @@ import static org.springframework.security.web.util.matcher.AntPathRequestMatche
 public class SecurityConfig {
 
     private final UserDetailsServiceImpl userDetailsService;
+    private final CustomOidcUserService customOidcUserService;
 
-    public SecurityConfig(@Lazy UserDetailsServiceImpl userDetailsService) {
+    public SecurityConfig(@Lazy UserDetailsServiceImpl userDetailsService,
+                         CustomOidcUserService customOidcUserService) {
         this.userDetailsService = userDetailsService;
+        this.customOidcUserService = customOidcUserService;
     }
 
     @Bean(name = "securityFilterChain")
@@ -39,9 +42,8 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(CorsConfigurer::disable)
-                .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
                 .authorizeHttpRequests(auth -> auth
-
                         .requestMatchers(
                                 antMatcher(HttpMethod.POST, "/auth/otp"),
                                 antMatcher(HttpMethod.POST, "/auth/verify-otp"),
@@ -54,6 +56,10 @@ public class SecurityConfig {
                 .oauth2ResourceServer(oauth2 -> oauth2
                         .jwt(jwt -> jwt.decoder(accessJwtDecoder))
                         .authenticationEntryPoint(entryPoint))
+                .oauth2Login(oauth -> oauth
+                        .userInfoEndpoint(userInfo ->
+                                userInfo.oidcUserService(customOidcUserService))
+                        .defaultSuccessUrl("/health", true))
                 .headers(headers -> headers
                         .frameOptions(frame -> frame.sameOrigin()))
                 .build();

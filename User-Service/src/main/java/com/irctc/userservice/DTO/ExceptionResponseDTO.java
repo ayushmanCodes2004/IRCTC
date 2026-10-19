@@ -1,11 +1,21 @@
 package com.irctc.userservice.DTO;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.http.HttpStatus;
+
 import java.time.LocalDateTime;
 
-public record ExceptionResponseDTO(
-        String path,
-        HttpStatus status,
-        String message,
-        LocalDateTime timestamp
-) {}
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class ExceptionResponseDTO {
+    
+    private String path;
+    private HttpStatus status;
+    private String message;
+    private LocalDateTime timestamp;
+}

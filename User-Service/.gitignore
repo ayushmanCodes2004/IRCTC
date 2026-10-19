@@ -46,14 +46,18 @@ logs/
 .DS_Store
 Thumbs.db
 
+# IDE
+.idea/
+
+# Environment files
+.env
+.env.*
+**/.env.example
+
+# Environment-specific configuration
 **/application-dev.properties
 **/application-prod.properties
 
-
-.env.example
-**/.env.example
-
-.idea/
-
+# Logs
 *.log
 logs/

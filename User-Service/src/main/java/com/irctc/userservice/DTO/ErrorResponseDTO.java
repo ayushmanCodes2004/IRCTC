@@ -1,3 +1,16 @@
 package com.irctc.userservice.DTO;
 
-public record ErrorResponseDTO(boolean success, String message) {}
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class ErrorResponseDTO {
+    
+    private boolean success;
+    private String message;
+}

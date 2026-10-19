@@ -42,8 +42,8 @@ public class AuthController {
 
     @PostMapping("/verify-otp")
     public ResponseEntity<RegistrationResponseDTO> verifyOTP(@RequestBody OtpResultDTO otpResultDTO) {
-        String otpSessionId = otpResultDTO.otpSessionId();
-        String otp = otpResultDTO.otp();
+        String otpSessionId = otpResultDTO.getOtpSessionId();
+        String otp = otpResultDTO.getOtp();
 
         if (otpSessionId == null || otp == null) {
             throw new BadRequestException("OTP session ID and OTP must be provided");
