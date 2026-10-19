@@ -1,4 +1,4 @@
-package com.irctc.userservice.dto;
+package com.irctc.userservice.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class OtpSessionData {
+public class OtpSessionDataDTO {
 
     private String hashedOtp;
     private String firstName;

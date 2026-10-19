@@ -1,4 +1,4 @@
-package com.irctc.userservice.dto;
+package com.irctc.userservice.DTO;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisterRequest {
+public class RegisterRequestDTO {
     
     @NotBlank(message = "First name is required")
     private String firstName;

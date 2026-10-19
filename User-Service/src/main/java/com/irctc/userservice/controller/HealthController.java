@@ -1,22 +1,21 @@
-package com.irctc.userservice.controller;
+package com.irctc.userservice.Controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import java.util.HashMap;
-import java.util.Map;
 
+import java.util.Map;
 
 @RestController
 public class HealthController {
 
     @GetMapping("/health")
-    public ResponseEntity<Map<String, Object>> health() {
-        Map<String, Object> response = new HashMap<>();
-        response.put("status", "UP");
-        response.put("service", "user-service");
-        response.put("timestamp", System.currentTimeMillis());
-        return ResponseEntity.ok(response);
+    public ResponseEntity<Map<String, String>> health() {
+        return ResponseEntity.ok(
+                Map.of(
+                        "status", "UP",
+                        "service", "user-service"
+                )
+        );
     }
-
 }

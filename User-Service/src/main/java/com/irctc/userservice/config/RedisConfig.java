@@ -1,4 +1,4 @@
-package com.irctc.userservice.config;
+package com.irctc.userservice.Config;
 
 import io.lettuce.core.ClientOptions;
 import io.lettuce.core.SocketOptions;
@@ -27,7 +27,7 @@ public class RedisConfig {
     private int redisPort;
 
     
-    @Bean
+    @Bean(name = "redisConnectionFactory")
     public RedisConnectionFactory redisConnectionFactory() {
         logger.info("Configuring Redis connection to {}:{}", redisHost, redisPort);
         

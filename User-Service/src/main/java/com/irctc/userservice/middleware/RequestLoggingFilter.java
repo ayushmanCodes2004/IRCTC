@@ -1,5 +1,6 @@
-package com.irctc.userservice.middleware;
+package com.irctc.userservice.Middleware;
 
+import com.irctc.userservice.Util.ExceptionHandler;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -24,18 +25,19 @@ public class RequestLoggingFilter implements Filter {
 
         long startTime = System.currentTimeMillis();
 
-        try {
-            chain.doFilter(request, response);
-        } catch (Exception e) {
-            logger.error("Exception occurred while processing the request: {}", e.getMessage(), e);
-            throw e;
-        } finally {
-            long duration = System.currentTimeMillis() - startTime;
-            String method = httpRequest.getMethod();
-            String uri = httpRequest.getRequestURI();
-            int status = httpResponse.getStatus();
-
-            logger.info("{} {} {} {}ms", method, uri, status, duration);
-        }
+        ExceptionHandler.handleChecked(() -> {
+            try {
+                chain.doFilter(request, response);
+            } catch (Exception e) {
+                logger.error("Exception occurred while processing the request: {}", e.getMessage(), e);
+                throw e;
+            } finally {
+                long duration = System.currentTimeMillis() - startTime;
+                String method = httpRequest.getMethod();
+                String uri = httpRequest.getRequestURI();
+                int status = httpResponse.getStatus();
+                logger.info("{} {} {} {}ms", method, uri, status, duration);
+            }
+        });
     }
 }

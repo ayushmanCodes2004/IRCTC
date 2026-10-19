@@ -1,6 +1,5 @@
-package com.irctc.userservice.dto;
+package com.irctc.userservice.DTO;
 
-import com.irctc.userservice.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,12 +9,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegistrationResponse {
+public class OtpResponseDTO {
 
-    private Boolean success;
-
+    private boolean success;
     private String message;
-
-    private User data;
-
+    private OtpResultDTO otpResultDTO;
 }

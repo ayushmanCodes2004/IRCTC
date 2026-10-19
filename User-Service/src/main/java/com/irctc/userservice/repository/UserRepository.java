@@ -1,6 +1,6 @@
-package com.irctc.userservice.repository;
+package com.irctc.userservice.Repository;
 
-import com.irctc.userservice.entity.User;
+import com.irctc.userservice.Entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

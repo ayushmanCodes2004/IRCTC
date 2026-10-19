@@ -1,4 +1,4 @@
-package com.irctc.userservice.config;
+package com.irctc.userservice.Config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +17,7 @@ public class CorsConfig {
 
     private static final Logger logger = LoggerFactory.getLogger(CorsConfig.class);
 
-    @Bean
+    @Bean(name = "corsFilter")
     public CorsFilter corsFilter() {
         logger.info("Configuring CORS");
         

@@ -1,0 +1,19 @@
+
+# IntelliJ IDEA
+.idea/
+
+# ZIP archives
+*.zip
+
+# Environment-specific configuration
+**/application-dev.properties
+**/application-prod.properties
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/

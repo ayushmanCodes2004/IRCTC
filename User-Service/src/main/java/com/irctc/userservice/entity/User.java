@@ -1,4 +1,4 @@
-package com.irctc.userservice.entity;
+package com.irctc.userservice.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;

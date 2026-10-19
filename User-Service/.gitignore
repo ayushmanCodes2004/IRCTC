@@ -45,3 +45,15 @@ logs/
 # OS files
 .DS_Store
 Thumbs.db
+
+**/application-dev.properties
+**/application-prod.properties
+
+
+.env.example
+**/.env.example
+
+.idea/
+
+*.log
+logs/
