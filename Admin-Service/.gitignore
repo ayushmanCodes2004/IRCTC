@@ -39,3 +39,7 @@ build/
 
 ### Logs ###
 *.log
+
+### Spring Boot Configuration ###
+**/application-prod.properties
+**/application-dev.properties
